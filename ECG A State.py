@@ -1,4 +1,4 @@
-### ECG Pipeline for Sleep State Analysis - Sherbrooke Dataset - ACTIVE ###
+### ECG Pipeline for Sleep State Analysis - ACTIVE Sleep###
 ### Import necessary libraries ###
 import scipy.io as spio
 import matplotlib.pyplot as plt
@@ -7,6 +7,8 @@ import tkinter as tk
 import numpy as np
 import pandas as pd
 import neurokit2 as nk
+from scipy.signal import welch
+from scipy.interpolate import interp1d
 
 ####### 1 Select .mat file  ##########
 root = tk.Tk()
@@ -33,8 +35,8 @@ if file_path:
     print(f"Duration: {len(ecg_raw)/1000/60:.2f} minutes")
 
     ##### 5. Segment Signal: Slice to Sleep Window  ######
-    start_sample = 0 * 1000        # = 0
-    end_sample   = 0 * 1000     # = 300,000
+    start_sample = 0 * 1000        # = start time 
+    end_sample   = 0 * 1000     # = end time 
     ecg_raw = ecg_raw[start_sample:end_sample] 
 
     ##### Print trimmed info #####
@@ -418,8 +420,6 @@ axes = fig.get_axes()
 ax_psd = axes[1]
 
 # ── 2. Compute extended PSD manually ─────────────────────────────────────────
-from scipy.signal import welch
-from scipy.interpolate import interp1d
 
 # RR intervals in ms and time axis in seconds
 rri_ms   = np.diff(peaks_cleaned).astype(float)          # samples → ms at 1000 Hz
