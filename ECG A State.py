@@ -389,13 +389,13 @@ plt.show()
 
 
 ##### Find HRV #########
-hrv_indices = nk.hrv(rpeaks, sampling_rate=1000, show=True)
+hrv_indices = nk.hrv(peaks_cleaned, sampling_rate=1000, show=True)
 
 
 
 ##### HRV Frequency Domain with extended PSD #####
 hrv_freq = nk.hrv_frequency(
-     rpeaks,
+     peaks_cleaned,
      sampling_rate=1000,
      show=True,
      vhf=(0.4, 2),         
@@ -404,7 +404,7 @@ hrv_freq = nk.hrv_frequency(
 
 
 # ── 1. Let neurokit draw its default HRV figure ──────────────────────────────
-hrv_indices = nk.hrv(rpeaks, sampling_rate=1000, show=True)
+hrv_indices = nk.hrv(peaks_cleaned, sampling_rate=1000, show=True)
 
 # Grab the figure neurokit just created (it's the current active figure)
 fig = plt.gcf()
