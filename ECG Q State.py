@@ -1,4 +1,4 @@
-### ECG Pipeline for Sleep State Analysis - Sherbrooke Dataset ###
+### ECG Pipeline for Sleep State Analysis - Quiet Sleep ###
 ### Import necessary libraries ###
 import scipy.io as spio
 import matplotlib.pyplot as plt
